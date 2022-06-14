@@ -65,9 +65,9 @@ const Signup = ({ navigation }) => {
 						mode='contained'
 						color='red'
 						style={{ borderRadius: 25, marginTop: 30 }}
-						onPress={() => navigation.navigate('main-page')}
+						onPress={() => navigation.navigate('log-in')}
 					>
-						Create Account - go to main page
+						Create Account - go to login
 					</Button>
 				</View>
 			</ScrollView>

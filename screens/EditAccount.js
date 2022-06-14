@@ -47,9 +47,9 @@ const EditAccount = ({ navigation }) => {
 				mode='contained'
 				color='red'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('main-page')}
+				onPress={() => navigation.navigate('acc-details')}
 			>
-				Save - go to mainpage
+				Save - go to acc details
 			</Button>
 		</View>
 	);

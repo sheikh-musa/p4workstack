@@ -1,27 +1,27 @@
-import { NavigationContainer } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 
-const MainPage = ({ navigation }) => {
+const AccountDetails = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
-			<Text>MAIN PAGE</Text>
+			<Text>Account Details Page</Text>
 			<Button
 				mode='contained'
 				color='red'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('acc-details')}
+				onPress={() => navigation.navigate('edit-acc')}
 			>
-				My Account
+				Edit Details
 			</Button>
+
 			<Button
 				mode='contained'
 				color='green'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('add-card')}
+				onPress={() => navigation.navigate('main-page')}
 			>
-				Add Card
+				Back
 			</Button>
 		</View>
 	);
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default MainPage;
+export default AccountDetails;
