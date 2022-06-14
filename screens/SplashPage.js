@@ -21,7 +21,7 @@ const MainPage = ({ navigation }) => {
 						marginLeft: 10,
 						marginRight: 10,
 					}}
-					onPress={() => navigation.navigate('sign-up')}
+					onPress={() => navigation.navigate('Sign Up')}
 				>
 					SignUp
 				</Button>
@@ -34,7 +34,7 @@ const MainPage = ({ navigation }) => {
 						marginLeft: 10,
 						marginRight: 10,
 					}}
-					onPress={() => navigation.navigate('log-in')}
+					onPress={() => navigation.navigate('Log In')}
 				>
 					Login
 				</Button>
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingBottom: 100,
 	},
 	image: {
 		resizeMode: 'contain',

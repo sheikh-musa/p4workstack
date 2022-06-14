@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 
-const NewCard = ({ navigation }) => {
+const LogOut = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
-			<Text>Add Card Page</Text>
+			<Text>Have you saved your work?</Text>
 			<Button
 				mode='contained'
 				color='red'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Home')}
+				onPress={() =>
+					navigation.getParent('MainStack').navigate('Landing Page')
+				}
 			>
-				Save Card - go to mainpage
+				Logging Out
 			</Button>
 		</View>
 	);
@@ -26,4 +28,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default NewCard;
+export default LogOut;

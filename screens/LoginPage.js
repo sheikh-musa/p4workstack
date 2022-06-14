@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
 					mode='contained'
 					color='green'
 					style={{ borderRadius: 25, marginTop: 30, marginRight: 5 }}
-					onPress={() => navigation.navigate('sign-up')}
+					onPress={() => navigation.navigate('Sign Up')}
 				>
 					Sign up
 				</Button>
@@ -57,9 +57,9 @@ const Login = ({ navigation }) => {
 					mode='contained'
 					color='red'
 					style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
-					onPress={() => navigation.navigate('main-page')}
+					onPress={() => navigation.navigate('Main')}
 				>
-					Login (MP)
+					Login
 				</Button>
 			</View>
 		</View>

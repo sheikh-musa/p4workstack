@@ -11,67 +11,61 @@ const Signup = ({ navigation }) => {
 	const [passwordRepeat, setPasswordRepeat] = useState('');
 
 	return (
-		<SafeAreaView>
-			<ScrollView>
-				<View style={styles.container}>
-					<Text style={styles.title}>Create an account</Text>
-					<View>
-						<TextInput
-							label='First Name'
-							value={firstName}
-							onChangeText={(firstName) => setFirstName(firstName)}
-							mode='flat'
-							style={styles.textinput}
-						/>
-						<TextInput
-							label='Last Name'
-							value={lastName}
-							onChangeText={(lastName) => setLastName(lastName)}
-							mode='flat'
-							style={styles.textinput}
-						/>
-						<TextInput
-							label='Username'
-							value={username}
-							onChangeText={(username) => setUsername(username)}
-							mode='flat'
-							style={styles.textinput}
-						/>
-						<TextInput
-							label='Email'
-							value={email}
-							onChangeText={(email) => setEmail(email)}
-							mode='flat'
-							style={styles.textinput}
-						/>
-						<TextInput
-							label='Password'
-							value={password}
-							onChangeText={(password) => setPassword(password)}
-							mode='flat'
-							style={styles.textinput}
-						/>
-						<TextInput
-							label='Repeat Password'
-							value={passwordRepeat}
-							onChangeText={(passwordRepeat) =>
-								setPasswordRepeat(passwordRepeat)
-							}
-							mode='flat'
-							style={styles.textinput}
-						/>
-					</View>
-					<Button
-						mode='contained'
-						color='red'
-						style={{ borderRadius: 25, marginTop: 30 }}
-						onPress={() => navigation.navigate('log-in')}
-					>
-						Create Account - go to login
-					</Button>
-				</View>
-			</ScrollView>
-		</SafeAreaView>
+		<View style={styles.container}>
+			<Text style={styles.title}>Create an account</Text>
+			<View>
+				<TextInput
+					label='First Name'
+					value={firstName}
+					onChangeText={(firstName) => setFirstName(firstName)}
+					mode='flat'
+					style={styles.textinput}
+				/>
+				<TextInput
+					label='Last Name'
+					value={lastName}
+					onChangeText={(lastName) => setLastName(lastName)}
+					mode='flat'
+					style={styles.textinput}
+				/>
+				<TextInput
+					label='Username'
+					value={username}
+					onChangeText={(username) => setUsername(username)}
+					mode='flat'
+					style={styles.textinput}
+				/>
+				<TextInput
+					label='Email'
+					value={email}
+					onChangeText={(email) => setEmail(email)}
+					mode='flat'
+					style={styles.textinput}
+				/>
+				<TextInput
+					label='Password'
+					value={password}
+					onChangeText={(password) => setPassword(password)}
+					mode='flat'
+					style={styles.textinput}
+				/>
+				<TextInput
+					label='Repeat Password'
+					value={passwordRepeat}
+					onChangeText={(passwordRepeat) => setPasswordRepeat(passwordRepeat)}
+					mode='flat'
+					style={styles.textinput}
+				/>
+			</View>
+			<Button
+				mode='contained'
+				color='red'
+				style={{ borderRadius: 25, marginTop: 30 }}
+				onPress={() => navigation.navigate('Log In')}
+			>
+				Create Account - go to login
+			</Button>
+		</View>
 	);
 };
 
@@ -81,7 +75,6 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop: 20,
 	},
 	title: {
 		fontSize: 24,

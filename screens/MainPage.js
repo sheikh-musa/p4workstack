@@ -11,7 +11,7 @@ const MainPage = ({ navigation }) => {
 				mode='contained'
 				color='red'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('acc-details')}
+				onPress={() => navigation.navigate('Settings')}
 			>
 				My Account
 			</Button>
@@ -19,13 +19,23 @@ const MainPage = ({ navigation }) => {
 				mode='contained'
 				color='green'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('add-card')}
+				onPress={() => navigation.navigate('Add Card')}
 			>
 				Add Card
 			</Button>
 		</View>
 	);
 };
+
+// const Tab = createBottomTabNavigator();
+
+// const BottomTabNavigator = () => {
+// 	return (
+// 		<Tab.Navigator>
+// 			<Tab.Screen name='Account' component={AccountDetails} />
+// 		</Tab.Navigator>
+// 	);
+// };
 
 const styles = StyleSheet.create({
 	container: {
