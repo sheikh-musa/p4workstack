@@ -2,27 +2,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+import { BoardRepository, Board } from 'react-native-draganddrop-board';
+import datainfo from './data';
+
+//this is important 
+const boardRepository = new BoardRepository(datainfo);
 
 const MainPage = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<Text>MAIN PAGE</Text>
-			<Button
-				mode='contained'
-				color='red'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('acc-details')}
-			>
-				My Account
-			</Button>
-			<Button
-				mode='contained'
-				color='green'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('add-card')}
-			>
-				Add Card
-			</Button>
+			<Board
+				boardRepository={boardRepository}
+				open={() => { }}
+				onDragEnd={() => { }}
+			/>
 		</View>
 	);
 };
