@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 const Signup = ({ navigation }) => {
@@ -11,44 +11,54 @@ const Signup = ({ navigation }) => {
 	const [passwordRepeat, setPasswordRepeat] = useState('');
 
 	return (
-		<SafeAreaView>
-			<ScrollView>
-				<View style={styles.container}>
-					<Text style={styles.title}>Create an account</Text>
+			<View style={styles.container}>
+				<Image
+          	  	  style={{
+              	  height: 90,
+              	  width: 220 }}
+          	  	  source={require("../assets/avatar2.png")}
+        		/>
+				<Image
+          	  	  style={{
+              	  height: 90,
+              	  width: 220 }}
+          	  	  source={require("../assets/createacc.png")}
+        		/>
+		
 					<View>
 						<TextInput
 							label='First Name'
 							value={firstName}
 							onChangeText={(firstName) => setFirstName(firstName)}
-							mode='flat'
+							mode='outlined'
 							style={styles.textinput}
 						/>
 						<TextInput
 							label='Last Name'
 							value={lastName}
 							onChangeText={(lastName) => setLastName(lastName)}
-							mode='flat'
+							mode='outlined'
 							style={styles.textinput}
 						/>
 						<TextInput
 							label='Username'
 							value={username}
 							onChangeText={(username) => setUsername(username)}
-							mode='flat'
+							mode='outlined'
 							style={styles.textinput}
 						/>
 						<TextInput
 							label='Email'
 							value={email}
 							onChangeText={(email) => setEmail(email)}
-							mode='flat'
+							mode='outlined'
 							style={styles.textinput}
 						/>
 						<TextInput
 							label='Password'
 							value={password}
 							onChangeText={(password) => setPassword(password)}
-							mode='flat'
+							mode='outlined'
 							style={styles.textinput}
 						/>
 						<TextInput
@@ -57,36 +67,36 @@ const Signup = ({ navigation }) => {
 							onChangeText={(passwordRepeat) =>
 								setPasswordRepeat(passwordRepeat)
 							}
-							mode='flat'
+							mode='outlined'
 							style={styles.textinput}
 						/>
 					</View>
 					<Button
 						mode='contained'
-						color='red'
-						style={{ borderRadius: 25, marginTop: 30 }}
+						color='#EF4B4C'
+						style={{ borderRadius: 25, marginTop: 10 }}
 						onPress={() => navigation.navigate('log-in')}
 					>
 						Create Account - go to login
 					</Button>
 				</View>
-			</ScrollView>
-		</SafeAreaView>
+			
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#2E424D',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop: 20,
+		paddingTop: 60,
+		paddingBottom: 100,
 	},
 	title: {
 		fontSize: 24,
 		fontWeight: 'bold',
-		color: '#051C60',
+		color: 'white',
 		margin: 20,
 	},
 	textinput: {

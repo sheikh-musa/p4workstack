@@ -8,7 +8,7 @@ const AccountDetails = ({ navigation }) => {
 			<Text>Account Details Page</Text>
 			<Button
 				mode='contained'
-				color='red'
+				color='#EF4B4C'
 				style={{ borderRadius: 25, marginTop: 30 }}
 				onPress={() => navigation.navigate('edit-acc')}
 			>
@@ -17,7 +17,7 @@ const AccountDetails = ({ navigation }) => {
 
 			<Button
 				mode='contained'
-				color='green'
+				color='#FCC666'
 				style={{ borderRadius: 25, marginTop: 30 }}
 				onPress={() => navigation.navigate('main-page')}
 			>
