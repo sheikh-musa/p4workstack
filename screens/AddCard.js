@@ -10,9 +10,9 @@ const NewCard = ({ navigation }) => {
 				mode='contained'
 				color='red'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Home')}
+				onPress={() => navigation.navigate('Main')}
 			>
-				Save Card - go to mainpage
+				Save
 			</Button>
 		</View>
 	);

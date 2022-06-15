@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from '../screens/SignUp';
 import LoginPage from '../screens/LoginPage';
 import SplashPage from '../screens/SplashPage';
+import AddCard from '../screens/AddCard';
 import Main from './DrawerNavigator';
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,11 @@ const StackNavigator = () => {
 			<Stack.Screen
 				name='Log In'
 				component={LoginPage}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name='Add Card'
+				component={AddCard}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Screen
