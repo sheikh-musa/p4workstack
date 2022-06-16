@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import Avatar3 from '../assets/avatar3.png';
 
 const AccountDetails = ({ navigation }) => {
 	return (
@@ -10,9 +11,9 @@ const AccountDetails = ({ navigation }) => {
 					marginRight: 10,
 					marginBottom: -11,
 					height: 120,
-					width: 120
+					width: 120,
 				}}
-				source={require("../assets/avatar3.png")}
+				source={Avatar3}
 			/>
 			<Text></Text>
 			<Text>Account Details Page</Text>
@@ -20,7 +21,7 @@ const AccountDetails = ({ navigation }) => {
 				mode='contained'
 				color='#EF4B4C'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('edit-acc')}
+				onPress={() => navigation.navigate('Edit Account')}
 			>
 				Edit Details
 			</Button>
@@ -29,7 +30,7 @@ const AccountDetails = ({ navigation }) => {
 				mode='contained'
 				color='#2E424D'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('main-page')}
+				onPress={() => navigation.navigate('Home')}
 			>
 				Back
 			</Button>

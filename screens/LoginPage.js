@@ -8,9 +8,10 @@ import {
 	Platform,
 	TouchableWithoutFeedback,
 	Keyboard,
-	Image
+	Image,
 } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import loginImg from '../assets/login.png';
 
 const axios = require('axios').default;
 const instance = axios.create({
@@ -86,20 +87,14 @@ const Login = ({ navigation }) => {
 		>
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<View>
-					<Image
-						style={{
-							height: 90,
-							width: 220
-						}}
-						source={require("../assets/login.png")}
-					/>
+					<Image style={styles.loginImage} source={loginImg} />
 					<View>
 						<TextInput
 							label='Username'
 							value={username}
 							onChangeText={(username) => setUsername(username)}
 							mode='outlined'
-							style={{ width: 200 }}
+							style={styles.textinput}
 							returnKeyType='next'
 							ref={usernameRef}
 							onSubmitEditing={() => passwordRef.current?.focus()}
@@ -109,7 +104,7 @@ const Login = ({ navigation }) => {
 							value={password}
 							onChangeText={(password) => setPassword(password)}
 							mode='outlined'
-							style={{ width: 200 }}
+							style={styles.textinput}
 							secureTextEntry={true}
 							returnKeyType='go'
 							ref={passwordRef}
@@ -146,7 +141,7 @@ const Login = ({ navigation }) => {
 							style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
 							onPress={() => navigation.navigate('MainDrawer')}
 						>
-							Login (MP)
+							Login
 						</Button>
 					</View>
 				</View>
@@ -157,7 +152,7 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#FCC666',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -170,6 +165,15 @@ const styles = StyleSheet.create({
 	tinytext: {
 		fontSize: 12,
 		marginTop: 5,
+		alignSelf: 'center',
+	},
+	loginImage: {
+		height: 90,
+		width: 220,
+	},
+	textinput: {
+		width: 200,
+		alignSelf: 'center',
 	},
 });
 
