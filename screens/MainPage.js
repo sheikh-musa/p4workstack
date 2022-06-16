@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler'
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, Modal, Portal, Provider, TextInput, Switch } from 'react-native-paper';
 import { BoardRepository, Board } from 'react-native-draganddrop-board';
 import datainfo from './data';
 
@@ -11,6 +11,21 @@ let boardRepository = new BoardRepository(datainfo);
 let data2 = datainfo;
 
 const MainPage = ({ navigation }) => {
+
+	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) begins <<<<<<<< 
+	const [visible, setVisible] = React.useState(false);
+
+	//modal popup
+	const showModal = () => setVisible(true);
+	const hideModal = () => setVisible(false);
+
+	//form field
+	const containerStyle = { backgroundColor: 'white', padding: 20 };
+	const [title, setTitle] = React.useState("");
+	const [deadline, setDeadline] = React.useState("");
+	const [description, setDescription] = React.useState("");
+
+	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) ends <<<<<<<< 
 
 	return (
 		<View style={styles.container}>

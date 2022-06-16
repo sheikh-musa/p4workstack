@@ -1,45 +1,81 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Button } from 'react-native-paper';
-import WorkstackLogo from '../assets/workstack-logo.jpeg';
+import { Button, Chip, DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 const MainPage = ({ navigation }) => {
+
+	const theme = {
+		...DefaultTheme,
+		colors: {
+			...DefaultTheme.colors,
+			primary: 'red',
+			text: 'black',
+		},
+	};
+
 	return (
-		<View style={styles.container}>
-			<Image source={WorkstackLogo} style={styles.image} />
-			<Text>
-				Keep up with work, know where you're at
-				{'\n'}
-			</Text>
-			<View style={{ flexDirection: 'row' }}>
-				<Button
-					mode='contained'
-					color='red'
+		<PaperProvider theme={theme}>
+			<View style={styles.container}>
+
+				<Image
 					style={{
-						width: 100,
-						borderRadius: 25,
-						marginLeft: 10,
-						marginRight: 10,
+						height: 90,
+						width: 190
 					}}
-					onPress={() => navigation.navigate('sign-up')}
-				>
-					SignUp
-				</Button>
-				<Button
-					mode='contained'
-					color='green'
+					source={require("../assets/ws.png")}
+				/>
+				<Image
 					style={{
-						width: 100,
-						borderRadius: 25,
-						marginLeft: 10,
-						marginRight: 10,
+						height: 210,
+						width: 320
 					}}
-					onPress={() => navigation.navigate('log-in')}
-				>
-					Login
-				</Button>
+					source={require("../assets/pic2.png")}
+				/>
+				<Text>
+
+				</Text>
+				<Text style={styles.titleText}>Stay focus and organized</Text>
+				<Text style={styles.baseText}>Simply drag and drop your things to do,</Text>
+				<Text style={styles.baseText}>and get more things done </Text>
+				<Text>
+					{'\n'}
+				</Text>
+
+				<View style={{ flexDirection: 'row' }}>
+
+					<Button
+						mode='contained'
+						color='#EF4B4C'
+						style={{
+							width: 100,
+							borderRadius: 25,
+							marginLeft: 10,
+							marginRight: 10,
+						}}
+						onPress={() => navigation.navigate('sign-up')}
+					>
+						SignUp
+					</Button>
+					<Button
+						mode='contained'
+						color='#FCC666'
+						style={{
+							width: 100,
+							borderRadius: 25,
+							marginLeft: 10,
+							marginRight: 10,
+						}}
+						onPress={() => navigation.navigate('log-in')}
+					>
+						Login
+					</Button>
+
+				</View>
+
+
 			</View>
-		</View>
+
+		</PaperProvider>
 	);
 };
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 
+
 const AccountDetails = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
