@@ -17,7 +17,7 @@ import datainfo from './data';
 let boardRepository = new BoardRepository(datainfo);
 let data2 = datainfo;
 
-const SplashPage = ({ navigation }) => {
+const MainPage = ({ navigation }) => {
 	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) begins <<<<<<<<
 	const [visible, setVisible] = React.useState(false);
 
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default SplashPage;
+export default MainPage;
