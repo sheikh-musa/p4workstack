@@ -10,8 +10,11 @@ import {
 	SafeAreaView,
 	ScrollView,
 	StatusBar,
+	Image,
 } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import avatar2 from '../assets/avatar2.png';
+import createAcc from '../assets/createacc.png';
 
 const axios = require('axios').default;
 const instance = axios.create({
@@ -107,7 +110,8 @@ const Signup = ({ navigation }) => {
 				>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<View style={styles.inner}>
-							<Text style={styles.title}>Create an account</Text>
+							<Image style={styles.image} source={avatar2} />
+							<Image style={styles.image} source={createAcc} />
 							<View>
 								<TextInput
 									label='First Name'
@@ -207,18 +211,32 @@ const styles = StyleSheet.create({
 		backgroundColor: '#2E424D',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop: 60,
-		paddingBottom: 100,
 	},
-	title: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		color: 'white',
-		margin: 20,
+	safeAreaContainer: {
+		flex: 1,
+		paddingTop: StatusBar.currentHeight,
+		backgroundColor: '#2E424D',
+	},
+	scrollView: {
+		backgroundColor: '#2E424D',
+	},
+	containerScrollView: {
+		flex: 1,
+		alignItems: 'center',
+	},
+	inner: {
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 	textinput: {
 		width: 300,
 		marginBottom: 10,
+	},
+	image: {
+		height: 90,
+		width: 220,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 });
 

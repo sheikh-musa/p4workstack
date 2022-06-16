@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 
 const Main = () => {
 	return (
-		<Drawer.Navigator screenOptions={{ gestureEnabled: false }}>
+		<Drawer.Navigator screenOptions={{ swipeEnabled: 'false' }}>
 			<Drawer.Screen name='Home' component={Board} />
 			<Drawer.Screen name='Settings' component={Account} />
 			<Drawer.Screen name='Log Out' component={LogOut} />

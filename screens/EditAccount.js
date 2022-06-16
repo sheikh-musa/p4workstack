@@ -100,7 +100,7 @@ const EditAccount = ({ navigation }) => {
 							</View>
 							<Button
 								mode='contained'
-								color='red'
+								color='#FCC666'
 								style={{ borderRadius: 25, marginTop: 30 }}
 								onPress={() => navigation.navigate('My Account')}
 							>
@@ -123,10 +123,10 @@ const styles = StyleSheet.create({
 	safeAreaContainer: {
 		flex: 1,
 		paddingTop: StatusBar.currentHeight,
-		backgroundColor: 'white',
+		backgroundColor: '#EF4B4C',
 	},
 	scrollView: {
-		backgroundColor: 'white',
+		backgroundColor: '#EF4B4C',
 		marginHorizontal: 20,
 	},
 	containerScrollView: {
