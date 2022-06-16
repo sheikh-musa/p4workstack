@@ -10,7 +10,7 @@ const NewCard = ({ navigation }) => {
 				mode='contained'
 				color='red'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Main')}
+				onPress={() => navigation.navigate('Board')}
 			>
 				Save
 			</Button>

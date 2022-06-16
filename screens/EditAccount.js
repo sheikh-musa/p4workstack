@@ -62,7 +62,7 @@ const EditAccount = ({ navigation }) => {
 									value={password}
 									onChangeText={(password) => setPassword(password)}
 									mode='flat'
-									secureTextEntry='true'
+									secureTextEntry={true}
 									style={styles.textinput}
 									returnKeyType='next'
 									ref={passwordRef}
@@ -75,7 +75,7 @@ const EditAccount = ({ navigation }) => {
 										setPasswordRepeat(passwordRepeat)
 									}
 									mode='flat'
-									secureTextEntry='true'
+									secureTextEntry={true}
 									style={styles.textinput}
 									returnKeyType='done'
 									ref={passwordRepeatRef}
