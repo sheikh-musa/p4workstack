@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { StyleSheet, Text, View, Alert, Image } from 'react-native';
-=======
 import {
 	StyleSheet,
 	Text,
@@ -11,9 +8,10 @@ import {
 	Platform,
 	TouchableWithoutFeedback,
 	Keyboard,
+	Image,
 } from 'react-native';
->>>>>>> sophie
 import { Button, TextInput } from 'react-native-paper';
+import loginImg from '../assets/login.png';
 
 const axios = require('axios').default;
 const instance = axios.create({
@@ -34,71 +32,6 @@ const Login = ({ navigation }) => {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
 
-<<<<<<< HEAD
-	return (
-		<View style={styles.container}>
-
-			<Image
-				style={{
-					height: 90,
-					width: 220
-				}}
-				source={require("../assets/login.png")}
-			/>
-			<View>
-				<TextInput
-					label='Username'
-					value={username}
-					onChangeText={(username) => setUsername(username)}
-					mode='outlined'
-					style={{ width: 200 }}
-				/>
-				<TextInput
-					label='Password'
-					value={password}
-					onChangeText={(password) => setPassword(password)}
-					mode='outlined'
-					style={{ width: 200 }}
-					secureTextEntry={true}
-				/>
-				<Text></Text>
-				<Text
-					style={styles.tinytext}
-					onPress={() =>
-						Alert.alert('Reset Password', 'Confirm reset password?', [
-							{
-								text: 'Cancel',
-							},
-							{
-								text: 'Reset',
-							},
-						])
-					}
-				>
-					Forgot Password?
-				</Text>
-			</View>
-
-			<View style={{ flexDirection: 'row' }}>
-				<Button
-					mode='contained'
-					color='#EF4B4C'
-					style={{ borderRadius: 25, marginTop: 30, marginRight: 5 }}
-					onPress={() => navigation.navigate('sign-up')}
-				>
-					Sign up
-				</Button>
-				<Button
-					mode='contained'
-					color='#2E424D'
-					style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
-					onPress={() => navigation.navigate('main-page')}
-				>
-					Login (MP)
-				</Button>
-			</View>
-		</View>
-=======
 	const [logErr, setLogErr] = useState('');
 	const [show, setShow] = useState(false);
 
@@ -154,14 +87,14 @@ const Login = ({ navigation }) => {
 		>
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<View>
-					<Text style={styles.title}>Login Page</Text>
+					<Image style={styles.loginImage} source={loginImg} />
 					<View>
 						<TextInput
 							label='Username'
 							value={username}
 							onChangeText={(username) => setUsername(username)}
 							mode='outlined'
-							style={{ width: 200 }}
+							style={styles.textinput}
 							returnKeyType='next'
 							ref={usernameRef}
 							onSubmitEditing={() => passwordRef.current?.focus()}
@@ -171,7 +104,7 @@ const Login = ({ navigation }) => {
 							value={password}
 							onChangeText={(password) => setPassword(password)}
 							mode='outlined'
-							style={{ width: 200 }}
+							style={styles.textinput}
 							secureTextEntry={true}
 							returnKeyType='go'
 							ref={passwordRef}
@@ -196,7 +129,7 @@ const Login = ({ navigation }) => {
 					<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 						<Button
 							mode='contained'
-							color='green'
+							color='#EF4B4C'
 							style={{ borderRadius: 25, marginTop: 30, marginRight: 5 }}
 							onPress={() => navigation.navigate('Sign Up')}
 						>
@@ -204,7 +137,7 @@ const Login = ({ navigation }) => {
 						</Button>
 						<Button
 							mode='contained'
-							color='red'
+							color='#2E424D'
 							style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
 							onPress={() => navigation.navigate('MainDrawer')}
 						>
@@ -214,22 +147,15 @@ const Login = ({ navigation }) => {
 				</View>
 			</TouchableWithoutFeedback>
 		</KeyboardAvoidingView>
->>>>>>> sophie
 	);
 };
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#FCC666',
-		alignItems: 'center',
 		justifyContent: 'center',
-		paddingBottom: 100,
+		alignItems: 'center',
 	},
-<<<<<<< HEAD
-	tinytext: {
-		color: 'white',
-	}
-=======
 	title: {
 		fontSize: 24,
 		fontWeight: 'bold',
@@ -239,8 +165,16 @@ const styles = StyleSheet.create({
 	tinytext: {
 		fontSize: 12,
 		marginTop: 5,
+		alignSelf: 'center',
 	},
->>>>>>> sophie
+	loginImage: {
+		height: 90,
+		width: 220,
+	},
+	textinput: {
+		width: 200,
+		alignSelf: 'center',
+	},
 });
 
 export default Login;

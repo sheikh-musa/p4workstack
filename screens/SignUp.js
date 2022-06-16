@@ -204,33 +204,17 @@ const Signup = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#2E424D',
 		alignItems: 'center',
 		justifyContent: 'center',
-	},
-	safeAreaContainer: {
-		flex: 1,
-		paddingTop: StatusBar.currentHeight,
-		backgroundColor: 'white',
-	},
-	scrollView: {
-		backgroundColor: 'white',
-		marginHorizontal: 20,
-	},
-	containerScrollView: {
-		flex: 1,
-		alignItems: 'center',
-	},
-	inner: {
-		alignItems: 'center',
-		justifyContent: 'center',
+		paddingTop: 60,
+		paddingBottom: 100,
 	},
 	title: {
 		fontSize: 24,
 		fontWeight: 'bold',
-		color: '#051C60',
+		color: 'white',
 		margin: 20,
-		textAlign: 'center',
 	},
 	textinput: {
 		width: 300,
