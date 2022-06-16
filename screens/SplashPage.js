@@ -42,18 +42,28 @@ const MainPage = ({ navigation }) => {
 		</View>
 	);
 };
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#2E424D',
 		alignItems: 'center',
 		justifyContent: 'center',
 		paddingBottom: 100,
 	},
 	image: {
-		resizeMode: 'contain',
-		width: 350,
-		height: 200,
+		flex: 1,
+		justifyContent: "center"
+	},
+	baseText: {
+		fontSize: 13,
+		color: 'white',
+		textAlign: 'center',
+	},
+	titleText: {
+		fontSize: 21,
+		fontWeight: "bold",
+		color: 'white'
 	},
 });
 
