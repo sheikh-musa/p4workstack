@@ -1,18 +1,24 @@
 import { NavigationContainer } from '@react-navigation/native';
-import 'react-native-gesture-handler'
+import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
-import { Button, Modal, Portal, Provider, TextInput, Switch } from 'react-native-paper';
+import {
+	Button,
+	Modal,
+	Portal,
+	Provider,
+	TextInput,
+	Switch,
+} from 'react-native-paper';
 import { BoardRepository, Board } from 'react-native-draganddrop-board';
 import datainfo from './data';
 
-//this is important 
+//this is important
 let boardRepository = new BoardRepository(datainfo);
 let data2 = datainfo;
 
-const MainPage = ({ navigation }) => {
-
-	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) begins <<<<<<<< 
+const SplashPage = ({ navigation }) => {
+	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) begins <<<<<<<<
 	const [visible, setVisible] = React.useState(false);
 
 	//modal popup
@@ -21,21 +27,23 @@ const MainPage = ({ navigation }) => {
 
 	//form field
 	const containerStyle = { backgroundColor: 'white', padding: 20 };
-	const [title, setTitle] = React.useState("");
-	const [deadline, setDeadline] = React.useState("");
-	const [description, setDescription] = React.useState("");
+	const [title, setTitle] = React.useState('');
+	const [deadline, setDeadline] = React.useState('');
+	const [description, setDescription] = React.useState('');
 
-	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) ends <<<<<<<< 
+	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) ends <<<<<<<<
 
 	return (
 		<View style={styles.container}>
 			<Board
 				boardRepository={boardRepository}
-				open={(item) => { console.log("edit card function to be added here") }}
-				onDragEnd={(srcColumn, destColumn, draggedItem) => { console.log(draggedItem) }}
+				open={(item) => {
+					console.log('edit card function to be added here');
+				}}
+				onDragEnd={(srcColumn, destColumn, draggedItem) => {
+					console.log(draggedItem);
+				}}
 			/>
-
-			<Text>MAIN PAGE</Text>
 			{/* <Button
                 mode='contained'
                 color='#FCC666'
@@ -44,46 +52,30 @@ const MainPage = ({ navigation }) => {
             >
                 Add Card
             </Button> */}
-			<Button
-				mode='contained'
-				color='#2E424D'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Settings')}
-			>
-<<<<<<< HEAD
-				Back to My Account
-=======
-				My Account
-			</Button>
-			<Button
-				mode='contained'
-				color='green'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Add Card')}
-			>
-				Add Card
->>>>>>> sophie
-			</Button>
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) begins <<<<<<<<  */}
 			<Provider>
 				<Portal>
-					<Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+					<Modal
+						visible={visible}
+						onDismiss={hideModal}
+						contentContainerStyle={containerStyle}
+					>
 						<Text>Edit Task Details...</Text>
 						<TextInput
-							label="Title"
+							label='Title'
 							value={title}
-							onChangeText={text => setTitle(text)}
+							onChangeText={(text) => setTitle(text)}
 						/>
 						<TextInput
-							label="Deadline"
+							label='Deadline'
 							value={deadline}
-							onChangeText={text => setDeadline(text)}
+							onChangeText={(text) => setDeadline(text)}
 						/>
 						<TextInput
-							label="Description"
+							label='Description'
 							value={description}
-							onChangeText={text => setDescription(text)}
+							onChangeText={(text) => setDescription(text)}
 						/>
 						<Button
 							mode='contained'
@@ -103,10 +95,7 @@ const MainPage = ({ navigation }) => {
 				>
 					Add Card
 				</Button>
-
-
 			</Provider>
-
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) ends <<<<<<<<  */}
 		</View>
@@ -138,4 +127,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default MainPage;
+export default SplashPage;
