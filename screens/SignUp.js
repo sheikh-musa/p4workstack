@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -11,72 +11,73 @@ import {
 	ScrollView,
 	StatusBar,
 	Image,
-} from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
-import avatar2 from '../assets/avatar2.png';
-import createAcc from '../assets/createacc.png';
+} from "react-native";
+import { Button, TextInput } from "react-native-paper";
+import avatar2 from "../assets/avatar2.png";
+import createAcc from "../assets/createacc.png";
 
-const axios = require('axios').default;
+const axios = require("axios").default;
 const instance = axios.create({
-	baseURL: 'https://sdic4g5.herokuapp.com/',
+	// baseURL: 'https://sdic4g5.herokuapp.com/',
 	// baseURL: "http://localhost:3001/",
+	baseURL: "http://192.168.50.69:3001",
 });
 
 const Signup = ({ navigation }) => {
-	const [firstName, setFirstName] = React.useState('');
-	const [lastName, setLastName] = React.useState('');
-	const [username, setUsername] = React.useState('');
-	const [email, setEmail] = React.useState('');
-	const [password, setPassword] = React.useState('');
-	const [passwordRepeat, setPasswordRepeat] = React.useState('');
+	const [firstName, setFirstName] = React.useState("");
+	const [lastName, setLastName] = React.useState("");
+	const [username, setUsername] = React.useState("");
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
+	const [passwordRepeat, setPasswordRepeat] = React.useState("");
 
-	const [regErr, setRegErr] = useState('');
+	const [regErr, setRegErr] = useState("");
 	const [show, setShow] = useState(false);
 
 	function handleClose() {
 		setShow(false);
-		setRegErr('');
-		setFirstName('');
-		setLastName('');
-		setUsername('');
-		setEmail('');
-		setPassword('');
+		setRegErr("");
+		setFirstName("");
+		setLastName("");
+		setUsername("");
+		setEmail("");
+		setPassword("");
 	}
 
 	const handleShow = () => setShow(true);
 
 	const handleRegFirstName = (event) => {
 		setFirstName(event.target.value);
-		console.log('first name is:', event.target.value);
+		console.log("first name is:", event.target.value);
 	};
 	const handleRegLastName = (event) => {
 		setLastName(event.target.value);
-		console.log('last name is:', event.target.value);
+		console.log("last name is:", event.target.value);
 	};
 	const handleRegUser = (event) => {
 		setUsername(event.target.value);
-		console.log('username is:', event.target.value);
+		console.log("username is:", event.target.value);
 	};
 	const handleRegEmail = (event) => {
 		setEmail(event.target.value);
-		console.log('email is:', event.target.value);
+		console.log("email is:", event.target.value);
 	};
 	const handleRegPW = (event) => {
 		setPassword(event.target.value);
-		console.log('password is:', event.target.value);
+		console.log("password is:", event.target.value);
 	};
 
 	const toRegister = (event) => {
 		event.preventDefault();
-		console.log('first name 👉️', firstName);
-		console.log('last name 👉️', lastName);
-		console.log('username 👉️', username);
-		console.log('email 👉️', email);
-		console.log('password 👉️', password);
+		// console.log("first name 👉️", firstName);
+		// console.log("last name 👉️", lastName);
+		console.log("username 👉️", username);
+		console.log("email 👉️", email);
+		console.log("password 👉️", password);
 		instance
-			.post('/signup', {
-				firstName: firstName,
-				lastName: lastName,
+			.post("/register", {
+				// firstName: firstName,
+				// lastName: lastName,
 				username: username,
 				password: password,
 				email: email,
@@ -84,10 +85,11 @@ const Signup = ({ navigation }) => {
 			.then(function (response) {
 				console.log(response);
 				handleClose();
+				navigation.navigate("Log In");
 			})
 			.catch(function (error) {
-				console.log(error.response.data.message);
-				setRegErr(error.response.data.message);
+				console.log(error);
+				// setRegErr(error.response.data.message);
 			});
 	};
 
@@ -100,12 +102,9 @@ const Signup = ({ navigation }) => {
 
 	return (
 		<SafeAreaView style={styles.safeAreaContainer}>
-			<ScrollView
-				style={styles.scrollView}
-				contentContainerStyle={styles.containerScrollView}
-			>
+			<ScrollView style={styles.scrollView} contentContainerStyle={styles.containerScrollView}>
 				<KeyboardAvoidingView
-					behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+					behavior={Platform.OS === "ios" ? "padding" : "height"}
 					style={styles.container}
 				>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -114,86 +113,85 @@ const Signup = ({ navigation }) => {
 							<Image style={styles.image} source={createAcc} />
 							<View>
 								<TextInput
-									label='First Name'
+									label="First Name"
 									value={firstName}
 									onChangeText={(firstName) => setFirstName(firstName)}
-									mode='flat'
-									textContentType='name'
+									mode="flat"
+									textContentType="name"
 									style={styles.textinput}
-									returnKeyType='next'
+									returnKeyType="next"
 									ref={firstNameRef}
 									onSubmitEditing={() => lastNameRef.current?.focus()}
 									onChange={handleRegFirstName}
 								/>
 								<TextInput
-									label='Last Name'
+									label="Last Name"
 									value={lastName}
 									onChangeText={(lastName) => setLastName(lastName)}
-									mode='flat'
-									textContentType='familyName'
+									mode="flat"
+									textContentType="familyName"
 									style={styles.textinput}
-									returnKeyType='next'
+									returnKeyType="next"
 									ref={lastNameRef}
 									onSubmitEditing={() => usernameRef.current?.focus()}
 									onChange={handleRegLastName}
 								/>
 								<TextInput
-									label='Username'
+									label="Username"
 									value={username}
 									onChangeText={(username) => setUsername(username)}
-									mode='flat'
-									textContentType='username'
+									mode="flat"
+									textContentType="username"
 									style={styles.textinput}
-									returnKeyType='next'
+									returnKeyType="next"
 									ref={usernameRef}
 									onSubmitEditing={() => emailRef.current?.focus()}
 									onChange={handleRegUser}
 								/>
 								<TextInput
-									label='Email'
+									label="Email"
 									value={email}
 									onChangeText={(email) => setEmail(email)}
-									mode='flat'
-									textContentType='emailAddress'
+									mode="flat"
+									textContentType="emailAddress"
 									style={styles.textinput}
-									returnKeyType='next'
+									returnKeyType="next"
 									ref={emailRef}
 									onSubmitEditing={() => passwordRef.current?.focus()}
 									onChange={handleRegEmail}
 								/>
 								<TextInput
-									label='Password'
+									label="Password"
 									value={password}
 									onChangeText={(password) => setPassword(password)}
-									mode='flat'
+									mode="flat"
 									secureTextEntry={true}
-									textContentType='password'
+									textContentType="password"
 									style={styles.textinput}
-									returnKeyType='next'
+									returnKeyType="next"
 									ref={passwordRef}
 									onSubmitEditing={() => passwordRepeatRef.current?.focus()}
 									onChange={handleRegPW}
 								/>
 								<TextInput
-									label='Repeat Password'
+									label="Repeat Password"
 									value={passwordRepeat}
-									onChangeText={(passwordRepeat) =>
-										setPasswordRepeat(passwordRepeat)
-									}
-									mode='flat'
+									onChangeText={(passwordRepeat) => setPasswordRepeat(passwordRepeat)}
+									mode="flat"
 									secureTextEntry={true}
-									textContentType='newPassword'
+									textContentType="newPassword"
 									style={styles.textinput}
-									returnKeyType='go'
+									returnKeyType="go"
 									ref={passwordRepeatRef}
 									onSubmitEditing={toRegister}
 								/>
 							</View>
 							<Button
-								mode='contained'
-								color='red'
+								mode="contained"
+								color="red"
 								style={{ borderRadius: 25, marginTop: 30 }}
-								onPress={() => navigation.navigate('Log In')}
+								// onPress={() => navigation.navigate("Log In")}
+								onPress={toRegister}
 							>
 								Sign Up
 							</Button>
@@ -208,25 +206,25 @@ const Signup = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#2E424D',
-		alignItems: 'center',
-		justifyContent: 'center',
+		backgroundColor: "#2E424D",
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	safeAreaContainer: {
 		flex: 1,
 		paddingTop: StatusBar.currentHeight,
-		backgroundColor: '#2E424D',
+		backgroundColor: "#2E424D",
 	},
 	scrollView: {
-		backgroundColor: '#2E424D',
+		backgroundColor: "#2E424D",
 	},
 	containerScrollView: {
 		flex: 1,
-		alignItems: 'center',
+		alignItems: "center",
 	},
 	inner: {
-		alignItems: 'center',
-		justifyContent: 'center',
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	textinput: {
 		width: 300,
@@ -235,8 +233,8 @@ const styles = StyleSheet.create({
 	image: {
 		height: 90,
 		width: 220,
-		justifyContent: 'center',
-		alignItems: 'center',
+		justifyContent: "center",
+		alignItems: "center",
 	},
 });
 
