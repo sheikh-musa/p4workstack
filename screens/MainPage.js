@@ -1,41 +1,25 @@
+import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { StyleSheet, Text, View, Alert } from 'react-native';
+import { Button, Modal, Portal, Provider, TextInput, Switch } from 'react-native-paper';
+import { BoardRepository, Board } from 'react-native-draganddrop-board';
+import datainfo from './data';
+
+const boardRepository = new BoardRepository(datainfo);
 
 const MainPage = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
-			<Text>MAIN PAGE</Text>
-			<Button
-				mode='contained'
-				color='red'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Settings')}
-			>
-				My Account
-			</Button>
-			<Button
-				mode='contained'
-				color='green'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Add Card')}
-			>
-				Add Card
-			</Button>
+
+			<Board
+				boardRepository={boardRepository}
+				open={(item) => { console.log("edit card function to be added here") }}
+				onDragEnd={(srcColumn, destColumn, draggedItem) => { console.log(draggedItem) }}
+			/>
 		</View>
 	);
 };
-
-// const Tab = createBottomTabNavigator();
-
-// const BottomTabNavigator = () => {
-// 	return (
-// 		<Tab.Navigator>
-// 			<Tab.Screen name='Account' component={AccountDetails} />
-// 		</Tab.Navigator>
-// 	);
-// };
 
 const styles = StyleSheet.create({
 	container: {
