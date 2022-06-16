@@ -19,8 +19,7 @@ import createAcc from "../assets/createacc.png";
 const axios = require("axios").default;
 const instance = axios.create({
 	// baseURL: 'https://sdic4g5.herokuapp.com/',
-	// baseURL: "http://localhost:3001/",
-	baseURL: "http://192.168.50.69:3001",
+	baseURL: "http://192.168.50.35:3001",
 });
 
 const Signup = ({ navigation }) => {
@@ -42,6 +41,7 @@ const Signup = ({ navigation }) => {
 		setUsername("");
 		setEmail("");
 		setPassword("");
+		setPasswordRepeat("");
 	}
 
 	const handleShow = () => setShow(true);
@@ -67,17 +67,12 @@ const Signup = ({ navigation }) => {
 		console.log("password is:", event.target.value);
 	};
 
-	const toRegister = (event) => {
-		event.preventDefault();
-		// console.log("first name 👉️", firstName);
-		// console.log("last name 👉️", lastName);
-		console.log("username 👉️", username);
-		console.log("email 👉️", email);
-		console.log("password 👉️", password);
+	const toRegister = async (event) => {
+		// event.preventDefault();
 		instance
 			.post("/register", {
-				// firstName: firstName,
-				// lastName: lastName,
+				firstName: firstName,
+				lastName: lastName,
 				username: username,
 				password: password,
 				email: email,
@@ -85,10 +80,11 @@ const Signup = ({ navigation }) => {
 			.then(function (response) {
 				console.log(response);
 				handleClose();
-				navigation.navigate("Log In");
+				navigation.navigate("Log In", { message: "Registration successful!" });
 			})
 			.catch(function (error) {
-				console.log(error);
+				console.log(JSON.parse(error.response.request._response).message);
+				alert(JSON.parse(error.response.request._response).message);
 				// setRegErr(error.response.data.message);
 			});
 	};

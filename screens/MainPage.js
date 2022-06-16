@@ -10,8 +10,9 @@ import datainfo from "./data";
 let boardRepository = new BoardRepository(datainfo);
 let data2 = datainfo;
 
-const MainPage = ({ navigation }) => {
+const MainPage = ({ route, navigation }) => {
 	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) begins <<<<<<<<
+	console.log("params received " + route.params?.username);
 	const [visible, setVisible] = React.useState(false);
 
 	//modal popup
@@ -28,6 +29,7 @@ const MainPage = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
+			{/* {username} */}
 			<Board
 				boardRepository={boardRepository}
 				open={(item) => {

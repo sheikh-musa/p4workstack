@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -9,115 +9,122 @@ import {
 	TouchableWithoutFeedback,
 	Keyboard,
 	Image,
-} from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
-import loginImg from '../assets/login.png';
+} from "react-native";
+import { Button, TextInput } from "react-native-paper";
+import loginImg from "../assets/login.png";
 
-const axios = require('axios').default;
+const axios = require("axios").default;
 const instance = axios.create({
-	baseURL: 'https://sdic4g5.herokuapp.com/',
-	// baseURL: "http://localhost:3001/",
+	// baseURL: "https://sdic4g5.herokuapp.com/",
+	baseURL: "http://192.168.50.35:3001",
 });
 
 // const [signIn, setSignIn] = React.useState(false);
 // const [board, setBoard] = React.useState([]);
-// const [token, setToken] = React.FragmentuseState('');
-// const userSignIn = ({ board, token }) => {
-// 	setBoard(board);
-// 	setToken(token);
-// 	setSignIn(true);
-// };
+// const [token, setToken] = React.FragmentuseState("");
+const userSignIn = ({ board, token }) => {
+	setBoard(board);
+	setToken(token);
+	setSignIn(true);
+};
 
-const Login = ({ navigation }) => {
-	const [username, setUsername] = React.useState('');
-	const [password, setPassword] = React.useState('');
+const Login = ({ route, navigation }) => {
+	const [email, setEmail] = React.useState("");
+	const [username, setUsername] = React.useState("");
+	const [password, setPassword] = React.useState("");
 
-	const [logErr, setLogErr] = useState('');
+	const [logErr, setLogErr] = useState("");
 	const [show, setShow] = useState(false);
 
 	const usernameRef = React.useRef();
 	const passwordRef = React.useRef();
 
-	// function handleClose() {
-	// 	setShow(false);
-	// 	setLogErr('');
-	// 	setEmail('');
-	// 	setPassword('');
-	// }
+	function handleClose() {
+		setShow(false);
+		setLogErr("");
+		setEmail("");
+		setPassword("");
+	}
 
-	// const handleShow = () => setShow(true);
+	const handleShow = () => setShow(true);
 
-	// const loginUser = (event) => {
-	// 	setUsername(event.target.value);
-	// 	console.log('username is', event.target.value);
-	// };
+	const loginUser = (event) => {
+		setUsername(event.target.value);
+		console.log("username is", event.target.value);
+	};
 
-	// const loginPassword = (event) => {
-	// 	setPassword(event.target.value);
-	// 	console.log('password is', event.target.value);
-	// };
+	const loginPassword = (event) => {
+		setPassword(event.target.value);
+		console.log("password is", event.target.value);
+	};
 
-	// const toLogin = (event) => {
-	// 	event.preventDefault();
-	// 	console.log('username 👉️', username);
-	// 	console.log('password 👉️', password);
-	// 	instance
-	// 		.post('/login', {
-	// 			username: username,
-	// 			password: password,
-	// 		})
-	// 		.then(function (response) {
-	// 			console.log(response.data.data);
-	// 			console.log('token', response.data.data.token);
-	// 			props.login({
-	// 				board: response.data.data.board,
-	// 				token: response.data.data.token,
-	// 			});
-	// 		})
-	// 		.catch(function (error) {
-	// 			console.log(error.response.data.message);
-	// 			setLogErr(error.response.data.message);
-	// 		});
-	// };
+	const toLogin = (event) => {
+		// event.preventDefault();
+		console.log("username 👉️", username);
+		console.log("password 👉️", password);
+		instance
+			.post("/login", {
+				username: username,
+				password: password,
+			})
+			.then(function (response) {
+				console.log(response.data.data);
+				// console.log('token', response.data.data.token);
+				// props.login({
+				// 	board: response.data.data.board,
+				// 	token: response.data.data.token,
+				// });
+				handleClose();
+				console.log("passing params " + response.data.data.username);
+				navigation.navigate("MainDrawer", { username: response.data.data.username });
+			})
+			.catch(function (error) {
+				console.log(error.response.request._response);
+				// console.log(JSON.parse(error.response.request._response).message);
+				alert(JSON.parse(error.response.request._response).message);
+				// setLogErr(error.response.data.message);
+			});
+	};
 
 	return (
 		<KeyboardAvoidingView
-			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+			behavior={Platform.OS === "ios" ? "padding" : "height"}
 			style={styles.container}
 		>
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<View>
 					<Image style={styles.loginImage} source={loginImg} />
 					<View>
+						{route.params?.message && alert(route.params?.message)}
 						<TextInput
-							label='Username'
+							label="Username"
 							value={username}
 							onChangeText={(username) => setUsername(username)}
-							mode='outlined'
+							mode="outlined"
 							style={styles.textinput}
-							returnKeyType='next'
+							returnKeyType="next"
 							ref={usernameRef}
 							onSubmitEditing={() => passwordRef.current?.focus()}
 						/>
 						<TextInput
-							label='Password'
+							label="Password"
 							value={password}
 							onChangeText={(password) => setPassword(password)}
-							mode='outlined'
+							mode="outlined"
 							style={styles.textinput}
 							secureTextEntry={true}
-							returnKeyType='go'
+							returnKeyType="go"
 							ref={passwordRef}
 						/>
 						<Text
 							style={styles.tinytext}
 							onPress={() =>
-								Alert.alert('Reset Password', 'Confirm reset password?', [
+								Alert.alert("Reset Password", "Confirm reset password?", [
 									{
-										text: 'Cancel',
+										text: "Cancel",
 									},
 									{
-										text: 'Reset',
+										text: "Reset",
 									},
 								])
 							}
@@ -126,20 +133,20 @@ const Login = ({ navigation }) => {
 						</Text>
 					</View>
 
-					<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+					<View style={{ flexDirection: "row", justifyContent: "center" }}>
 						<Button
-							mode='contained'
-							color='#EF4B4C'
+							mode="contained"
+							color="#EF4B4C"
 							style={{ borderRadius: 25, marginTop: 30, marginRight: 5 }}
-							onPress={() => navigation.navigate('Sign Up')}
+							onPress={() => navigation.navigate("Sign Up")}
 						>
 							Sign up
 						</Button>
 						<Button
-							mode='contained'
-							color='#2E424D'
+							mode="contained"
+							color="#2E424D"
 							style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
-							onPress={() => navigation.navigate('MainDrawer')}
+							onPress={toLogin}
 						>
 							Login
 						</Button>
@@ -152,20 +159,20 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FCC666',
-		justifyContent: 'center',
-		alignItems: 'center',
+		backgroundColor: "#FCC666",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 	title: {
 		fontSize: 24,
-		fontWeight: 'bold',
-		color: '#051C60',
+		fontWeight: "bold",
+		color: "#051C60",
 		paddingBottom: 10,
 	},
 	tinytext: {
 		fontSize: 12,
 		marginTop: 5,
-		alignSelf: 'center',
+		alignSelf: "center",
 	},
 	loginImage: {
 		height: 90,
@@ -173,7 +180,7 @@ const styles = StyleSheet.create({
 	},
 	textinput: {
 		width: 200,
-		alignSelf: 'center',
+		alignSelf: "center",
 	},
 });
 
