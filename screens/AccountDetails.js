@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
+import { StyleSheet, Image, Text, View } from 'react-native';
+import { Button } from 'react-native-paper';
 
 const AccountDetails = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
+			<Image
+          	  style={{
+			  marginRight: 10,
+			  marginBottom: -11, 
+              height: 120,
+              width: 120 }}
+          	  source={require("../assets/avatar3.png")}
+        	/>
+			<Text></Text>
 			<Text>Account Details Page</Text>
 			<Button
 				mode='contained'
@@ -17,7 +26,7 @@ const AccountDetails = ({ navigation }) => {
 
 			<Button
 				mode='contained'
-				color='#FCC666'
+				color='#2E424D'
 				style={{ borderRadius: 25, marginTop: 30 }}
 				onPress={() => navigation.navigate('main-page')}
 			>
@@ -30,7 +39,7 @@ const AccountDetails = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#FCC666',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},

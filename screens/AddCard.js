@@ -8,7 +8,7 @@ const NewCard = ({ navigation }) => {
 			<Text>Add Card Page</Text>
 			<Button
 				mode='contained'
-				color='red'
+				color='#EF4B4C'
 				style={{ borderRadius: 25, marginTop: 30 }}
 				onPress={() => navigation.navigate('main-page')}
 			>

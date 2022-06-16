@@ -8,14 +8,7 @@ const Login = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<Image
-          	  style={{
-			  marginRight: 10,
-			  marginBottom: -11, 
-              height: 120,
-              width: 120 }}
-          	  source={require("../assets/avatar.png")}
-        	/>
+	
 			<Image
           	  style={{
               height: 90,

@@ -12,6 +12,14 @@ const EditAccount = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
+			<Image
+          	  style={{
+			  marginRight: 10,
+			  marginBottom: -11, 
+              height: 120,
+              width: 120 }}
+          	  source={require("../assets/avatar.png")}
+        	/>
 			 <Image
           	  style={{
               height: 90,
@@ -52,7 +60,7 @@ const EditAccount = ({ navigation }) => {
 			<Button
 				mode='contained'
 				color='#2E424D'
-				style={{ borderRadius: 25, marginTop: 30 }}
+				style={{ borderRadius: 25, marginTop: 10 }}
 				onPress={() => navigation.navigate('acc-details')}
 			>
 				Save - go to acc details
