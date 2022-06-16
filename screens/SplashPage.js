@@ -10,7 +10,7 @@ import WorkstackLogo from '../assets/workstack-logo.jpeg';
 import pic2 from '../assets/pic2.png';
 import ws from '../assets/ws.png';
 
-const MainPage = ({ navigation }) => {
+const SplashPage = ({ navigation }) => {
 	const theme = {
 		...DefaultTheme,
 		colors: {
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default MainPage;
+export default SplashPage;
