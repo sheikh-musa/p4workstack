@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert, Image } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 const Login = ({ navigation }) => {
@@ -8,9 +8,14 @@ const Login = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<View>
-				<Text style={styles.title}>Login Page</Text>
-			</View>
+
+			<Image
+				style={{
+					height: 90,
+					width: 220
+				}}
+				source={require("../assets/login.png")}
+			/>
 			<View>
 				<TextInput
 					label='Username'
@@ -27,6 +32,7 @@ const Login = ({ navigation }) => {
 					style={{ width: 200 }}
 					secureTextEntry={true}
 				/>
+				<Text></Text>
 				<Text
 					style={styles.tinytext}
 					onPress={() =>
@@ -47,7 +53,7 @@ const Login = ({ navigation }) => {
 			<View style={{ flexDirection: 'row' }}>
 				<Button
 					mode='contained'
-					color='green'
+					color='#EF4B4C'
 					style={{ borderRadius: 25, marginTop: 30, marginRight: 5 }}
 					onPress={() => navigation.navigate('sign-up')}
 				>
@@ -55,7 +61,7 @@ const Login = ({ navigation }) => {
 				</Button>
 				<Button
 					mode='contained'
-					color='red'
+					color='#2E424D'
 					style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
 					onPress={() => navigation.navigate('main-page')}
 				>
@@ -68,16 +74,14 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
-		justifyContent: 'center',
+		backgroundColor: '#FCC666',
 		alignItems: 'center',
+		justifyContent: 'center',
+		paddingBottom: 100,
 	},
-	title: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		color: '#051C60',
-		paddingBottom: 10,
-	},
+	tinytext: {
+		color: 'white',
+	}
 });
 
 export default Login;

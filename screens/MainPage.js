@@ -19,6 +19,72 @@ const MainPage = ({ navigation }) => {
 				open={(item) => { console.log("edit card function to be added here") }}
 				onDragEnd={(srcColumn, destColumn, draggedItem) => { boardRepository.updateData(datainfo); console.log(datainfo) }}
 			/>
+
+			<Text>MAIN PAGE</Text>
+			{/* <Button
+                mode='contained'
+                color='#FCC666'
+                style={{ borderRadius: 25, marginTop: 30 }}
+                onPress={() => navigation.navigate('add-card')}
+            >
+                Add Card
+            </Button> */}
+			<Button
+				mode='contained'
+				color='#2E424D'
+				style={{ borderRadius: 25, marginTop: 30 }}
+				onPress={() => navigation.navigate('acc-details')}
+			>
+				Back to My Account
+			</Button>
+
+
+
+
+			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) begins <<<<<<<<  */}
+			<Provider>
+				<Portal>
+					<Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+						<Text>Edit Task Details...</Text>
+						<TextInput
+							label="Title"
+							value={title}
+							onChangeText={text => setTitle(text)}
+						/>
+						<TextInput
+							label="Deadline"
+							value={deadline}
+							onChangeText={text => setDeadline(text)}
+						/>
+						<TextInput
+							label="Description"
+							value={description}
+							onChangeText={text => setDescription(text)}
+						/>
+						<Button
+							mode='contained'
+							color='#EF4B4C'
+							style={{ borderRadius: 25, marginTop: 30 }}
+							onPress={() => navigation.navigate('main-page')}
+						>
+							Save Card - go to Boards
+						</Button>
+					</Modal>
+				</Portal>
+				<Button
+					mode='contained'
+					color='#FCC666'
+					style={{ borderRadius: 25, marginTop: 30 }}
+					onPress={showModal}
+				>
+					Add Card
+				</Button>
+
+
+			</Provider>
+
+
+			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) ends <<<<<<<<  */}
 		</View>
 	);
 };

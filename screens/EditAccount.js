@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 const EditAccount = ({ navigation }) => {
@@ -12,41 +12,57 @@ const EditAccount = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Edit Account Page</Text>
+			<Image
+				style={{
+					marginRight: 10,
+					marginBottom: -11,
+					height: 120,
+					width: 120
+				}}
+				source={require("../assets/avatar.png")}
+			/>
+			<Image
+				style={{
+					height: 90,
+					width: 250
+				}}
+				source={require("../assets/editacc.png")}
+			/>
+			<Text></Text>
 			<View>
 				<TextInput
 					label='Username'
 					value={username}
 					onChangeText={(username) => setUsername(username)}
-					mode='flat'
+					mode='outlined'
 					style={styles.textinput}
 				/>
 				<TextInput
 					label='Email'
 					value={email}
 					onChangeText={(email) => setEmail(email)}
-					mode='flat'
+					mode='outlined'
 					style={styles.textinput}
 				/>
 				<TextInput
 					label='Password'
 					value={password}
 					onChangeText={(password) => setPassword(password)}
-					mode='flat'
+					mode='outlined'
 					style={styles.textinput}
 				/>
 				<TextInput
 					label='Repeat Password'
 					value={passwordRepeat}
 					onChangeText={(passwordRepeat) => setPasswordRepeat(passwordRepeat)}
-					mode='flat'
+					mode='outlined'
 					style={styles.textinput}
 				/>
 			</View>
 			<Button
 				mode='contained'
-				color='red'
-				style={{ borderRadius: 25, marginTop: 30 }}
+				color='#2E424D'
+				style={{ borderRadius: 25, marginTop: 10 }}
 				onPress={() => navigation.navigate('acc-details')}
 			>
 				Save - go to acc details
@@ -57,15 +73,9 @@ const EditAccount = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#EF4B4C',
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		color: '#051C60',
-		margin: 20,
 	},
 	textinput: {
 		width: 300,
