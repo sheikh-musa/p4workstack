@@ -11,11 +11,72 @@ import {
 } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
-const Login = ({ navigation }) => {
+const axios = require('axios').default;
+const instance = axios.create({
+	baseURL: 'https://sdic4g5.herokuapp.com/',
+	// baseURL: "http://localhost:3001/",
+});
+
+const [signIn, setSignIn] = useState(false);
+const [board, setBoard] = useState({});
+const [token, setToken] = useState('');
+const userSignIn = ({ board, token }) => {
+	setBoard(board);
+	setToken(token);
+	setSignIn(true);
+};
+
+const Login = ({ navigation, props }) => {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
+
+	const [logErr, setLogErr] = useState('');
+	const [show, setShow] = useState(false);
+
 	const usernameRef = React.useRef();
 	const passwordRef = React.useRef();
+
+	function handleClose() {
+		setShow(false);
+		setLogErr('');
+		setEmail('');
+		setPassword('');
+	}
+
+	const handleShow = () => setShow(true);
+
+	const loginUser = (event) => {
+		setUsername(event.target.value);
+		console.log('username is', event.target.value);
+	};
+
+	const loginPassword = (event) => {
+		setPassword(event.target.value);
+		console.log('password is', event.target.value);
+	};
+
+	const toLogin = (event) => {
+		event.preventDefault();
+		console.log('username 👉️', username);
+		console.log('password 👉️', password);
+		instance
+			.post('/login', {
+				username: username,
+				password: password,
+			})
+			.then(function (response) {
+				console.log(response.data.data);
+				console.log('token', response.data.data.token);
+				props.login({
+					board: response.data.data.board,
+					token: response.data.data.token,
+				});
+			})
+			.catch(function (error) {
+				console.log(error.response.data.message);
+				setLogErr(error.response.data.message);
+			});
+	};
 
 	return (
 		<KeyboardAvoidingView
