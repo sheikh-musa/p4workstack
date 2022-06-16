@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Button, Chip, DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
