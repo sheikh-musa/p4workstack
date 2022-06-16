@@ -21,7 +21,7 @@ const AccountDetails = ({ navigation }) => {
 				mode='contained'
 				color='#EF4B4C'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('edit-acc')}
+				onPress={() => navigation.navigate('Edit Account')}
 			>
 				Edit Details
 			</Button>
@@ -30,7 +30,7 @@ const AccountDetails = ({ navigation }) => {
 				mode='contained'
 				color='#2E424D'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('main-page')}
+				onPress={() => navigation.navigate('Home')}
 			>
 				Back
 			</Button>

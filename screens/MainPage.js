@@ -48,9 +48,21 @@ const MainPage = ({ navigation }) => {
 				mode='contained'
 				color='#2E424D'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('acc-details')}
+				onPress={() => navigation.navigate('Settings')}
 			>
+<<<<<<< HEAD
 				Back to My Account
+=======
+				My Account
+			</Button>
+			<Button
+				mode='contained'
+				color='green'
+				style={{ borderRadius: 25, marginTop: 30 }}
+				onPress={() => navigation.navigate('Add Card')}
+			>
+				Add Card
+>>>>>>> sophie
 			</Button>
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) begins <<<<<<<<  */}
@@ -100,6 +112,16 @@ const MainPage = ({ navigation }) => {
 		</View>
 	);
 };
+
+// const Tab = createBottomTabNavigator();
+
+// const BottomTabNavigator = () => {
+// 	return (
+// 		<Tab.Navigator>
+// 			<Tab.Screen name='Account' component={AccountDetails} />
+// 		</Tab.Navigator>
+// 	);
+// };
 
 const styles = StyleSheet.create({
 	container: {

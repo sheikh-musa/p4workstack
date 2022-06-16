@@ -22,13 +22,24 @@ const MainPage = ({ navigation }) => {
 						height: 90,
 						width: 190
 					}}
+<<<<<<< HEAD
 					source={require("../assets/ws.png")}
 				/>
 				<Image
+=======
+					onPress={() => navigation.navigate('Sign Up')}
+				>
+					SignUp
+				</Button>
+				<Button
+					mode='contained'
+					color='green'
+>>>>>>> sophie
 					style={{
 						height: 210,
 						width: 320
 					}}
+<<<<<<< HEAD
 					source={require("../assets/pic2.png")}
 				/>
 				<Text>
@@ -73,6 +84,12 @@ const MainPage = ({ navigation }) => {
 				</View>
 
 
+=======
+					onPress={() => navigation.navigate('Log In')}
+				>
+					Login
+				</Button>
+>>>>>>> sophie
 			</View>
 
 		</PaperProvider>
@@ -85,7 +102,6 @@ const styles = StyleSheet.create({
 		backgroundColor: '#2E424D',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingBottom: 100,
 	},
 	image: {
 		flex: 1,
