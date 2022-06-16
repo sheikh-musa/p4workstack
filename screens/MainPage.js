@@ -32,7 +32,7 @@ const MainPage = ({ navigation }) => {
 			<Board
 				boardRepository={boardRepository}
 				open={(item) => { console.log("edit card function to be added here") }}
-				onDragEnd={(srcColumn, destColumn, draggedItem) => { boardRepository.updateData(datainfo); console.log(datainfo) }}
+				onDragEnd={(srcColumn, destColumn, draggedItem) => { console.log(draggedItem) }}
 			/>
 
 			<Text>MAIN PAGE</Text>
@@ -52,9 +52,6 @@ const MainPage = ({ navigation }) => {
 			>
 				Back to My Account
 			</Button>
-
-
-
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) begins <<<<<<<<  */}
 			<Provider>
