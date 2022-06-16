@@ -7,7 +7,8 @@ import { BoardRepository, Board } from 'react-native-draganddrop-board';
 import datainfo from './data';
 
 //this is important 
-const boardRepository = new BoardRepository(datainfo);
+let boardRepository = new BoardRepository(datainfo);
+let data2 = datainfo;
 
 const MainPage = ({ navigation }) => {
 
@@ -16,7 +17,7 @@ const MainPage = ({ navigation }) => {
 			<Board
 				boardRepository={boardRepository}
 				open={(item) => { console.log("edit card function to be added here") }}
-				onDragEnd={(srcColumn, destColumn, draggedItem) => { console.log(srcColumn, destColumn, draggedItem) }}
+				onDragEnd={(srcColumn, destColumn, draggedItem) => { boardRepository.updateData(datainfo); console.log(datainfo) }}
 			/>
 		</View>
 	);
