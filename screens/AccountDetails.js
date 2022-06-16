@@ -5,21 +5,31 @@ import { Button, TextInput } from 'react-native-paper';
 const AccountDetails = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
+			<Image
+				style={{
+					marginRight: 10,
+					marginBottom: -11,
+					height: 120,
+					width: 120
+				}}
+				source={require("../assets/avatar3.png")}
+			/>
+			<Text></Text>
 			<Text>Account Details Page</Text>
 			<Button
 				mode='contained'
-				color='red'
+				color='#EF4B4C'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Edit Account')}
+				onPress={() => navigation.navigate('edit-acc')}
 			>
 				Edit Details
 			</Button>
 
 			<Button
 				mode='contained'
-				color='green'
+				color='#2E424D'
 				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('Home')}
+				onPress={() => navigation.navigate('main-page')}
 			>
 				Back
 			</Button>

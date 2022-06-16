@@ -8,6 +8,7 @@ import {
 	Platform,
 	TouchableWithoutFeedback,
 	Keyboard,
+	Image
 } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
@@ -85,7 +86,13 @@ const Login = ({ navigation }) => {
 		>
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 				<View>
-					<Text style={styles.title}>Login Page</Text>
+					<Image
+						style={{
+							height: 90,
+							width: 220
+						}}
+						source={require("../assets/login.png")}
+					/>
 					<View>
 						<TextInput
 							label='Username'
@@ -127,7 +134,7 @@ const Login = ({ navigation }) => {
 					<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 						<Button
 							mode='contained'
-							color='green'
+							color='#EF4B4C'
 							style={{ borderRadius: 25, marginTop: 30, marginRight: 5 }}
 							onPress={() => navigation.navigate('Sign Up')}
 						>
@@ -135,11 +142,11 @@ const Login = ({ navigation }) => {
 						</Button>
 						<Button
 							mode='contained'
-							color='red'
+							color='#2E424D'
 							style={{ borderRadius: 25, marginTop: 30, marginLeft: 5 }}
 							onPress={() => navigation.navigate('MainDrawer')}
 						>
-							Login
+							Login (MP)
 						</Button>
 					</View>
 				</View>
