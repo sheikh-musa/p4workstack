@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
+import React, { useEffect, useContext } from "react";
+import { StyleSheet, Image, Text, View } from "react-native";
+import { Button } from "react-native-paper";
+import avatar3 from "../assets/avatar3.png";
+import AuthContext from "../context/AuthContext";
 
 const AccountDetails = ({ navigation }) => {
+	const user = useContext(AuthContext);
+	useEffect(() => {}, [user.email, user.username]);
 	return (
 		<View style={styles.container}>
-			<Text>Account Details Page</Text>
-			<Button
-				mode='contained'
-				color='red'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('edit-acc')}
-			>
-				Edit Details
-			</Button>
+			<Image
+				style={{
+					marginRight: 10,
+					marginBottom: -11,
+					height: 120,
+					width: 120,
+				}}
+				source={avatar3}
+			/>
 
-			<Button
-				mode='contained'
-				color='green'
-				style={{ borderRadius: 25, marginTop: 30 }}
-				onPress={() => navigation.navigate('main-page')}
-			>
-				Back
-			</Button>
+			<Text style={styles.title}>Account Details Page</Text>
+			<Text>
+				Name: {user.firstName} {user.lastName}
+			</Text>
+			<Text>Email: {user.email}</Text>
+			<Text>Username: {user.username}</Text>
+			<View style={{ flexDirection: "row" }}>
+				<Button
+					mode="contained"
+					color="#EF4B4C"
+					style={{ borderRadius: 25, marginTop: 30, marginRight: 10 }}
+					onPress={() => navigation.navigate("Edit Account")}
+				>
+					Edit
+				</Button>
+
+				<Button
+					mode="contained"
+					color="#2E424D"
+					style={{ borderRadius: 25, marginTop: 30, marginLeft: 10 }}
+					onPress={() => navigation.navigate("Home")}
+				>
+					Back
+				</Button>
+			</View>
 		</View>
 	);
 };
@@ -30,15 +51,14 @@ const AccountDetails = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
+		backgroundColor: "#FCC666",
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	title: {
 		fontSize: 24,
-		fontWeight: 'bold',
-		color: '#051C60',
-		margin: 20,
+		fontWeight: "bold",
+		color: "#051C60",
 	},
 });
 
