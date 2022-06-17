@@ -1,18 +1,19 @@
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import { Button, Modal, Portal, Provider, TextInput, Switch } from "react-native-paper";
 import { BoardRepository, Board } from "react-native-draganddrop-board";
 import datainfo from "./data";
+import AuthContext from "../context/AuthContext";
 
 //this is important
 let boardRepository = new BoardRepository(datainfo);
 let data2 = datainfo;
 
 const MainPage = ({ route, navigation }) => {
+	const userContext = useContext(AuthContext);
 	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) begins <<<<<<<<
-	console.log("params received " + route.params?.username);
 	const [visible, setVisible] = React.useState(false);
 
 	//modal popup
@@ -29,7 +30,6 @@ const MainPage = ({ route, navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			{/* {username} */}
 			<Board
 				boardRepository={boardRepository}
 				open={(item) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import loginImg from "../assets/login.png";
+import AuthContext from "../context/AuthContext";
 
 const axios = require("axios").default;
 const instance = axios.create({
@@ -22,41 +23,47 @@ const instance = axios.create({
 // const [signIn, setSignIn] = React.useState(false);
 // const [board, setBoard] = React.useState([]);
 // const [token, setToken] = React.FragmentuseState("");
-const userSignIn = ({ board, token }) => {
-	setBoard(board);
-	setToken(token);
-	setSignIn(true);
-};
+// const userSignIn = ({ board, token }) => {
+// 	setBoard(board);
+// 	setToken(token);
+// 	setSignIn(true);
+// };
 
 const Login = ({ route, navigation }) => {
-	const [email, setEmail] = React.useState("");
+	const userContext = useContext(AuthContext);
+	// const [email, setEmail] = React.useState("");
 	const [username, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
 
-	const [logErr, setLogErr] = useState("");
-	const [show, setShow] = useState(false);
-
+	// const [logErr, setLogErr] = useState("");
+	// const [show, setShow] = useState(false);
 	const usernameRef = React.useRef();
 	const passwordRef = React.useRef();
 
 	function handleClose() {
-		setShow(false);
-		setLogErr("");
-		setEmail("");
+		// setShow(false);
+		// setLogErr("");
+		setUsername("");
 		setPassword("");
 	}
 
-	const handleShow = () => setShow(true);
+	useEffect(() => {
+		if (route.params?.message != undefined) {
+			alert(route.params?.message);
+		}
+	});
 
-	const loginUser = (event) => {
-		setUsername(event.target.value);
-		console.log("username is", event.target.value);
-	};
+	// const handleShow = () => setShow(true);
 
-	const loginPassword = (event) => {
-		setPassword(event.target.value);
-		console.log("password is", event.target.value);
-	};
+	// const loginUser = (event) => {
+	// 	setUsername(event.target.value);
+	// 	console.log("username is", event.target.value);
+	// };
+
+	// const loginPassword = (event) => {
+	// 	setPassword(event.target.value);
+	// 	console.log("password is", event.target.value);
+	// };
 
 	const toLogin = (event) => {
 		// event.preventDefault();
@@ -69,14 +76,12 @@ const Login = ({ route, navigation }) => {
 			})
 			.then(function (response) {
 				console.log(response.data.data);
-				// console.log('token', response.data.data.token);
-				// props.login({
-				// 	board: response.data.data.board,
-				// 	token: response.data.data.token,
-				// });
+				userContext.email = response.data.data.email;
+				userContext.username = response.data.data.username;
+				userContext.firstName = response.data.data.firstName;
+				userContext.lastName = response.data.data.lastName;
 				handleClose();
-				console.log("passing params " + response.data.data.username);
-				navigation.navigate("MainDrawer", { username: response.data.data.username });
+				navigation.navigate("MainDrawer");
 			})
 			.catch(function (error) {
 				console.log(error.response.request._response);
@@ -95,7 +100,6 @@ const Login = ({ route, navigation }) => {
 				<View>
 					<Image style={styles.loginImage} source={loginImg} />
 					<View>
-						{route.params?.message && alert(route.params?.message)}
 						<TextInput
 							label="Username"
 							value={username}
