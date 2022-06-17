@@ -67,8 +67,8 @@ const Login = ({ route, navigation }) => {
 
 	const toLogin = (event) => {
 		// event.preventDefault();
-		console.log("username 👉️", username);
-		console.log("password 👉️", password);
+		// console.log("username 👉️", username);
+		// console.log("password 👉️", password);
 		instance
 			.post("/login", {
 				username: username,

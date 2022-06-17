@@ -8,7 +8,7 @@ import AuthContext from "./context/AuthContext";
 // const Drawer = createDrawerNavigator();
 
 export default function App() {
-	console.log("app is being rendered");
+	// console.log("app is being rendered");
 	const [username, setUsername] = React.useState("");
 	const [email, setEmail] = React.useState("");
 	const [firstName, setFirstName] = React.useState("");
