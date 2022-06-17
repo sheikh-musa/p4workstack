@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import { Button, Modal, Portal, Provider, TextInput, Switch } from "react-native-paper";
 import { BoardRepository, Board } from "react-native-draganddrop-board";
@@ -26,6 +26,10 @@ const MainPage = ({ route, navigation }) => {
 	const [deadline, setDeadline] = React.useState("");
 	const [description, setDescription] = React.useState("");
 
+	// useEffect(() => {
+	// 	hideModal();
+	// }, [boardRepository]);
+
 	// >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(i) ends <<<<<<<<
 
 	return (
@@ -33,20 +37,23 @@ const MainPage = ({ route, navigation }) => {
 			<Board
 				boardRepository={boardRepository}
 				open={(item) => {
-					console.log("edit card function to be added here");
+					showModal();
+					item.description = description;
+					item.name = title;
+					// console.log(boardRepository);
 				}}
 				onDragEnd={(srcColumn, destColumn, draggedItem) => {
 					// console.log(draggedItem);
 				}}
 			/>
 			{/* <Button
-                mode='contained'
-                color='#FCC666'
-                style={{ borderRadius: 25, marginTop: 30 }}
-                onPress={() => navigation.navigate('add-card')}
-            >
-                Add Card
-            </Button> */}
+				mode="contained"
+				color="#FCC666"
+				style={{ borderRadius: 25, marginTop: 30 }}
+				onPress={() => navigation.navigate("add-card")}
+			>
+				Add Card
+			</Button> */}
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) begins <<<<<<<<  */}
 			<Provider>
@@ -68,9 +75,11 @@ const MainPage = ({ route, navigation }) => {
 							mode="contained"
 							color="#EF4B4C"
 							style={{ borderRadius: 25, marginTop: 30 }}
-							onPress={() => navigation.navigate("main-page")}
+							onPress={() => {
+								hideModal;
+							}}
 						>
-							Save Card - go to Boards
+							Save Card
 						</Button>
 					</Modal>
 				</Portal>
