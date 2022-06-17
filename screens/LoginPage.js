@@ -16,7 +16,7 @@ import AuthContext from "../context/AuthContext";
 
 const axios = require("axios").default;
 const instance = axios.create({
-	baseURL: "https://sdic4g5.herokuapp.com/",
+	// baseURL: "https://sdic4g5.herokuapp.com/",
 	// baseURL: "http://192.168.50.35:3001",
 });
 
