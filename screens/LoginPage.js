@@ -16,8 +16,8 @@ import AuthContext from "../context/AuthContext";
 
 const axios = require("axios").default;
 const instance = axios.create({
-	// baseURL: "https://sdic4g5.herokuapp.com/",
-	baseURL: "http://192.168.50.35:3001",
+	baseURL: "https://sdic4g5.herokuapp.com/",
+	// baseURL: "http://192.168.50.35:3001",
 });
 
 // const [signIn, setSignIn] = React.useState(false);
@@ -47,11 +47,11 @@ const Login = ({ route, navigation }) => {
 		setPassword("");
 	}
 
-	useEffect(() => {
-		if (route.params?.message != undefined) {
-			alert(route.params?.message);
-		}
-	});
+	// useEffect(() => {
+	// 	if (route.params?.message != undefined) {
+	// 		alert(route.params?.message);
+	// 	}
+	// });
 
 	// const handleShow = () => setShow(true);
 
@@ -85,9 +85,10 @@ const Login = ({ route, navigation }) => {
 				navigation.navigate("MainDrawer");
 			})
 			.catch(function (error) {
-				console.log(error.response.request._response);
+				console.log(error.response);
+				// console.log(error.response.request._response);
 				// console.log(JSON.parse(error.response.request._response).message);
-				alert(JSON.parse(error.response.request._response).message);
+				// alert(JSON.parse(error.response.request._response).message);
 				// setLogErr(error.response.data.message);
 			});
 	};

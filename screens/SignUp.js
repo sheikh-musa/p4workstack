@@ -18,8 +18,8 @@ import createAcc from "../assets/createacc.png";
 
 const axios = require("axios").default;
 const instance = axios.create({
-	// baseURL: 'https://sdic4g5.herokuapp.com/',
-	baseURL: "http://192.168.50.35:3001",
+	baseURL: "https://sdic4g5.herokuapp.com/",
+	// baseURL: "http://192.168.50.35:3001",
 });
 
 const Signup = ({ navigation }) => {
@@ -30,12 +30,12 @@ const Signup = ({ navigation }) => {
 	const [password, setPassword] = React.useState("");
 	const [passwordRepeat, setPasswordRepeat] = React.useState("");
 
-	const [regErr, setRegErr] = useState("");
-	const [show, setShow] = useState(false);
+	// const [regErr, setRegErr] = useState("");
+	// const [show, setShow] = useState(false);
 
 	function handleClose() {
-		setShow(false);
-		setRegErr("");
+		// setShow(false);
+		// setRegErr("");
 		setFirstName("");
 		setLastName("");
 		setUsername("");
@@ -44,7 +44,7 @@ const Signup = ({ navigation }) => {
 		setPasswordRepeat("");
 	}
 
-	const handleShow = () => setShow(true);
+	// const handleShow = () => setShow(true);
 
 	const handleRegFirstName = (event) => {
 		setFirstName(event.target.value);
@@ -78,12 +78,16 @@ const Signup = ({ navigation }) => {
 				email: email,
 			})
 			.then(function (response) {
+				console.log("THEN");
 				console.log(response);
 				handleClose();
 				navigation.navigate("Log In", { message: "Registration successful!" });
 			})
 			.catch(function (error) {
-				console.log(JSON.parse(error.response.request._response).message);
+				console.log("CATCH");
+				// console.log(error.response);
+				// console.log(error.response.request._response);
+				// console.log(JSON.parse(error.response?.request._response).message);
 				alert(JSON.parse(error.response.request._response).message);
 				// setRegErr(error.response.data.message);
 			});
