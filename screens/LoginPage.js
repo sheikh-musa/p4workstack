@@ -80,6 +80,7 @@ const Login = ({ route, navigation }) => {
 				userContext.username = response.data.data.username;
 				userContext.firstName = response.data.data.firstName;
 				userContext.lastName = response.data.data.lastName;
+				userContext.id = response.data.data.id;
 				handleClose();
 				navigation.navigate("MainDrawer");
 			})

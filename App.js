@@ -8,17 +8,26 @@ import AuthContext from "./context/AuthContext";
 // const Drawer = createDrawerNavigator();
 
 export default function App() {
+	console.log("app is being rendered");
 	const [username, setUsername] = React.useState("");
 	const [email, setEmail] = React.useState("");
 	const [firstName, setFirstName] = React.useState("");
 	const [lastName, setLastName] = React.useState("");
 	const [password, setPassword] = React.useState("");
+	const [id, setId] = React.useState("");
+
 	const user = {
 		username: username,
+		setUsername,
 		email: email,
+		setEmail,
 		password: password,
 		firstName: firstName,
+		setFirstName,
 		lastName: lastName,
+		setLastName,
+		id: id,
+		setId,
 	};
 	return (
 		<AuthContext.Provider value={user}>

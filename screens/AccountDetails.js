@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { StyleSheet, Image, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 import avatar3 from "../assets/avatar3.png";
@@ -6,6 +6,7 @@ import AuthContext from "../context/AuthContext";
 
 const AccountDetails = ({ navigation }) => {
 	const user = useContext(AuthContext);
+	useEffect(() => {}, [user.email, user.username]);
 	return (
 		<View style={styles.container}>
 			<Image
@@ -23,7 +24,7 @@ const AccountDetails = ({ navigation }) => {
 				Name: {user.firstName} {user.lastName}
 			</Text>
 			<Text>Email: {user.email}</Text>
-			<Text>Username: {user.email}</Text>
+			<Text>Username: {user.username}</Text>
 			<View style={{ flexDirection: "row" }}>
 				<Button
 					mode="contained"
