@@ -6,6 +6,7 @@ import { Button, Modal, Portal, Provider, TextInput, Switch } from "react-native
 import { BoardRepository, Board } from "react-native-draganddrop-board";
 import datainfo from "./data";
 import AuthContext from "../context/AuthContext";
+import data from "./data";
 
 //this is important
 let boardRepository = new BoardRepository(datainfo);
@@ -41,6 +42,7 @@ const MainPage = ({ route, navigation }) => {
 					item.description = description;
 					item.name = title;
 					// console.log(boardRepository);
+					boardRepository.updateData(data2);
 				}}
 				onDragEnd={(srcColumn, destColumn, draggedItem) => {
 					// console.log(draggedItem);
@@ -75,9 +77,7 @@ const MainPage = ({ route, navigation }) => {
 							mode="contained"
 							color="#EF4B4C"
 							style={{ borderRadius: 25, marginTop: 30 }}
-							onPress={() => {
-								hideModal;
-							}}
+							onPress={hideModal}
 						>
 							Save Card
 						</Button>
@@ -94,7 +94,7 @@ const MainPage = ({ route, navigation }) => {
 			</Provider>
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) ends <<<<<<<<  */}
-		</View>
+		</View >
 	);
 };
 

@@ -13,10 +13,29 @@ import {
 	Image,
 } from "react-native";
 import { Button, TextInput } from 'react-native-paper';
+import datainfo from "./data";
+import { v4 as uuidv4 } from 'uuid';
 
 const NewCard = ({ navigation }) => {
 	const [taskname, settaskname] = React.useState("");
 	const [taskdesc, settaskdesc] = React.useState("");
+
+	const toCreateItem = () => {
+		const [list, setList] = React.useState(datainfo);
+
+		function handleChange(event) {
+			// track input field's state
+			settaskname(event.target.value);
+		}
+
+		function handleAdd() {
+			// add item
+			const newList = list.concat({ taskname });
+
+			setList(newList);
+		}
+
+	}
 
 	return (
 		<SafeAreaView style={styles.safeAreaContainer}>
@@ -43,6 +62,7 @@ const NewCard = ({ navigation }) => {
 								mode="contained"
 								color="red"
 								style={{ borderRadius: 25, marginTop: 30 }}
+								onPress={handleAdd}
 							>
 								Add Card
 							</Button>
