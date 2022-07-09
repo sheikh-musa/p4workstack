@@ -44,8 +44,10 @@ const MainPage = ({ route, navigation }) => {
 					// console.log(boardRepository);
 					boardRepository.updateData(data2);
 				}}
-				onDragEnd={(srcColumn, destColumn, draggedItem) => {
-					console.log(draggedItem);
+				onDragEnd={(srcColumn, destColumn, item) => {
+					console.log("ID :" + item.id);
+					console.log("Name :" + item.name);
+					console.log("Desc :" + item.description);
 				}}
 			/>
 			{/* <Button
@@ -94,7 +96,7 @@ const MainPage = ({ route, navigation }) => {
 			</Provider>
 
 			{/* >>>>> ADD-CARD/ EDIT-CARD CODEBLOCK(ii) ends <<<<<<<<  */}
-		</View >
+		</View>
 	);
 };
 
