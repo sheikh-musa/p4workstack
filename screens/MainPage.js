@@ -45,7 +45,7 @@ const MainPage = ({ route, navigation }) => {
 					boardRepository.updateData(data2);
 				}}
 				onDragEnd={(srcColumn, destColumn, draggedItem) => {
-					// console.log(draggedItem);
+					console.log(draggedItem);
 				}}
 			/>
 			{/* <Button
