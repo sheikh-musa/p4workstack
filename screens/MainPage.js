@@ -6,11 +6,21 @@ import { Button, Modal, Portal, Provider, TextInput, Switch } from "react-native
 import { BoardRepository, Board } from "react-native-draganddrop-board";
 import datainfo from "./data";
 import AuthContext from "../context/AuthContext";
-import data from "./data";
 
 //this is important
 let boardRepository = new BoardRepository(datainfo);
 let data2 = datainfo;
+
+var cardObj = {
+	"id": "",
+	"cards":
+	{
+		"id": "",
+		"title": "",
+		"label": "",
+		"description": "",
+	}
+};
 
 const MainPage = ({ route, navigation }) => {
 	const userContext = useContext(AuthContext);
@@ -37,17 +47,35 @@ const MainPage = ({ route, navigation }) => {
 		<View style={styles.container}>
 			<Board
 				boardRepository={boardRepository}
+				//Edit card's detail function
 				open={(item) => {
 					showModal();
-					item.description = description;
-					item.name = title;
-					// console.log(boardRepository);
-					boardRepository.updateData(data2);
+					item.attribute.name = title;
+					item.attributes.description = description;
 				}}
 				onDragEnd={(srcColumn, destColumn, item) => {
-					console.log("ID :" + item.id);
-					console.log("Name :" + item.name);
-					console.log("Desc :" + item.description);
+					console.log("Source Lane ID :" + srcColumn);
+					// console.log("Destination Lane ID :" + destColumn);
+					// console.log("ID :" + item.attributes.id);
+					// console.log("Name :" + item.attributes.row.name);
+					// console.log("Desc :" + item.attributes.row.description);
+
+					//Start of Delete Card Function
+					cardObj.id = srcColumn;
+					cardObj.cards.id = item.attributes.id;
+					//Call the Delete Statement here into database
+
+					//End of Delete Card Function
+
+					//Start of Add Card Function
+					cardObj.id = destColumn;
+					cardObj.cards.id = item.attributes.id;
+					cardObj.cards.title = item.attributes.row.name;
+					cardObj.cards.description = item.attributes.row.description;
+					console.log(cardObj);
+					//Call the insert statement here into database
+
+					//End of Add Card Function
 				}}
 			/>
 			{/* <Button
@@ -99,16 +127,6 @@ const MainPage = ({ route, navigation }) => {
 		</View>
 	);
 };
-
-// const Tab = createBottomTabNavigator();
-
-// const BottomTabNavigator = () => {
-// 	return (
-// 		<Tab.Navigator>
-// 			<Tab.Screen name='Account' component={AccountDetails} />
-// 		</Tab.Navigator>
-// 	);
-// };
 
 const styles = StyleSheet.create({
 	container: {

@@ -15,6 +15,8 @@ import {
 import { Button, TextInput } from 'react-native-paper';
 import datainfo from "./data";
 import { v4 as uuidv4 } from 'uuid';
+import { BoardRepository, Board } from "react-native-draganddrop-board";
+import AuthContext from "../context/AuthContext";
 
 const NewCard = ({ navigation }) => {
 	const [taskname, settaskname] = React.useState("");
@@ -30,11 +32,13 @@ const NewCard = ({ navigation }) => {
 
 		function handleAdd() {
 			// add item
-			const newList = list.concat({ taskname });
+			const data = {
+				id: '1',
+				name: '1',
+			};
 
-			setList(newList);
+			BoardRepository.addRow(1, data);
 		}
-
 	}
 
 	return (

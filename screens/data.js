@@ -4,8 +4,8 @@ const data = [
         name: 'Backlog',
         rows: [
             {
-                id: '1',
-                name: 'To do this and that',
+                id: 'abc',
+                name: 'I think I got it',
                 description: 'I am trying to work as hard as I can'
             },
         ]
