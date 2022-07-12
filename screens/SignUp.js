@@ -1,3 +1,4 @@
+import { NavigationHelpersContext } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
 	StyleSheet,
@@ -11,18 +12,17 @@ import {
 	ScrollView,
 	StatusBar,
 	Image,
+	Alert,
 } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import avatar2 from "../assets/avatar2.png";
 import createAcc from "../assets/createacc.png";
-
-const axios = require("axios").default;
-const instance = axios.create({
-	baseURL: "https://sdic4g5.herokuapp.com/",
-	// baseURL: "http://192.168.50.35:3001",
-});
+import AuthService from "../services/auth.service";
+import FormInput from "../services/FormInput";
 
 const Signup = ({ navigation }) => {
+	const [successful, setSuccessful] = useState(false);
+	const [message, setMessage] = useState("");
 	const [firstName, setFirstName] = React.useState("");
 	const [lastName, setLastName] = React.useState("");
 	const [username, setUsername] = React.useState("");
@@ -30,12 +30,7 @@ const Signup = ({ navigation }) => {
 	const [password, setPassword] = React.useState("");
 	const [passwordRepeat, setPasswordRepeat] = React.useState("");
 
-	// const [regErr, setRegErr] = useState("");
-	// const [show, setShow] = useState(false);
-
 	function handleClose() {
-		// setShow(false);
-		// setRegErr("");
 		setFirstName("");
 		setLastName("");
 		setUsername("");
@@ -44,53 +39,52 @@ const Signup = ({ navigation }) => {
 		setPasswordRepeat("");
 	}
 
-	// const handleShow = () => setShow(true);
-
 	const handleRegFirstName = (event) => {
 		setFirstName(event.target.value);
-		console.log("first name is:", event.target.value);
 	};
 	const handleRegLastName = (event) => {
 		setLastName(event.target.value);
-		console.log("last name is:", event.target.value);
 	};
 	const handleRegUser = (event) => {
 		setUsername(event.target.value);
-		console.log("username is:", event.target.value);
 	};
 	const handleRegEmail = (event) => {
 		setEmail(event.target.value);
-		console.log("email is:", event.target.value);
 	};
 	const handleRegPW = (event) => {
 		setPassword(event.target.value);
-		console.log("password is:", event.target.value);
 	};
 
 	const toRegister = async (event) => {
-		// event.preventDefault();
-		instance
-			.post("/register", {
-				firstName: firstName,
-				lastName: lastName,
-				username: username,
-				password: password,
-				email: email,
-			})
-			.then(function (response) {
-				console.log("THEN");
-				console.log(response);
+		AuthService.register({
+			username: username,
+			email: email,
+			firstName: firstName,
+			lastName: lastName,
+			password: password,
+		}).then(
+			(response) => {
+				setMessage(response.data.message);
+				setSuccessful(true);
 				handleClose();
-				navigation.navigate("Log In", { message: "Registration successful!" });
-			})
-			.catch(function (error) {
-				console.log("CATCH");
-				// console.log(error.response);
-				// console.log(error.response.request._response);
-				// console.log(JSON.parse(error.response?.request._response).message);
-				alert(JSON.parse(error.response.request._response).message);
-				// setRegErr(error.response.data.message);
-			});
+				Alert.alert("Account creation", "Successful", [
+					{
+						text: "Login",
+						onPress: () => navigation.navigate("Log In"),
+						style: "cancel",
+					},
+				]);
+			},
+			(error) => {
+				const resMessage =
+					(error.response && error.response.data && error.response.data.message) ||
+					error.message ||
+					error.toString();
+
+				Alert.alert(resMessage);
+				setSuccessful(false);
+			}
+		);
 	};
 
 	const firstNameRef = React.useRef();

@@ -13,84 +13,48 @@ import {
 import { Button, TextInput } from "react-native-paper";
 import loginImg from "../assets/login.png";
 import AuthContext from "../context/AuthContext";
-
-const axios = require("axios").default;
-const instance = axios.create({
-	// baseURL: "https://sdic4g5.herokuapp.com/",
-	// baseURL: "http://192.168.50.35:3001",
-});
-
-// const [signIn, setSignIn] = React.useState(false);
-// const [board, setBoard] = React.useState([]);
-// const [token, setToken] = React.FragmentuseState("");
-// const userSignIn = ({ board, token }) => {
-// 	setBoard(board);
-// 	setToken(token);
-// 	setSignIn(true);
-// };
+import AuthService from "../services/auth.service";
 
 const Login = ({ route, navigation }) => {
 	const userContext = useContext(AuthContext);
-	// const [email, setEmail] = React.useState("");
+	const [loading, setLoading] = useState(false);
+	const [message, setMessage] = useState("");
 	const [username, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
 
-	// const [logErr, setLogErr] = useState("");
-	// const [show, setShow] = useState(false);
 	const usernameRef = React.useRef();
 	const passwordRef = React.useRef();
 
 	function handleClose() {
-		// setShow(false);
-		// setLogErr("");
 		setUsername("");
 		setPassword("");
 	}
 
-	// useEffect(() => {
-	// 	if (route.params?.message != undefined) {
-	// 		alert(route.params?.message);
-	// 	}
-	// });
-
-	// const handleShow = () => setShow(true);
-
-	// const loginUser = (event) => {
-	// 	setUsername(event.target.value);
-	// 	console.log("username is", event.target.value);
-	// };
-
-	// const loginPassword = (event) => {
-	// 	setPassword(event.target.value);
-	// 	console.log("password is", event.target.value);
-	// };
-
 	const toLogin = (event) => {
-		// event.preventDefault();
-		// console.log("username 👉️", username);
-		// console.log("password 👉️", password);
-		instance
-			.post("/login", {
-				username: username,
+		setMessage("");
+		setLoading(true);
+		if (username && password) {
+			AuthService.login({
+				login: username,
 				password: password,
-			})
-			.then(function (response) {
-				console.log(response.data.data);
-				userContext.email = response.data.data.email;
-				userContext.username = response.data.data.username;
-				userContext.firstName = response.data.data.firstName;
-				userContext.lastName = response.data.data.lastName;
-				userContext.id = response.data.data.id;
-				handleClose();
-				navigation.navigate("MainDrawer");
-			})
-			.catch(function (error) {
-				console.log(error.response);
-				// console.log(error.response.request._response);
-				// console.log(JSON.parse(error.response.request._response).message);
-				// alert(JSON.parse(error.response.request._response).message);
-				// setLogErr(error.response.data.message);
-			});
+			}).then(
+				() => {
+					navigation.navigate("MainDrawer");
+				},
+				(error) => {
+					const resMessage =
+						(error.response && error.response.data && error.response.data.message) ||
+						error.message ||
+						error.toString();
+
+					// setLoading(false);
+					Alert.alert(resMessage);
+				}
+			);
+		} else {
+			Alert.alert("Enter username and password");
+			setLoading(false);
+		}
 	};
 
 	return (
@@ -103,7 +67,7 @@ const Login = ({ route, navigation }) => {
 					<Image style={styles.loginImage} source={loginImg} />
 					<View>
 						<TextInput
-							label="Username"
+							label="Username/email"
 							value={username}
 							onChangeText={(username) => setUsername(username)}
 							mode="outlined"
@@ -122,7 +86,7 @@ const Login = ({ route, navigation }) => {
 							returnKeyType="go"
 							ref={passwordRef}
 						/>
-						<Text
+						{/* <Text
 							style={styles.tinytext}
 							onPress={() =>
 								Alert.alert("Reset Password", "Confirm reset password?", [
@@ -136,7 +100,7 @@ const Login = ({ route, navigation }) => {
 							}
 						>
 							Forgot Password?
-						</Text>
+						</Text> */}
 					</View>
 
 					<View style={{ flexDirection: "row", justifyContent: "center" }}>
